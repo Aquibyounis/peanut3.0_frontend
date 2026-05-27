@@ -9,6 +9,8 @@ export const CONNECT_STEPS = {
   ASK_MESSAGE: 'ASK_MESSAGE',
 };
 
+const CONNECT_API_URL = import.meta.env.VITE_CONNECT_API_URL || 'http://localhost:8000/connect';
+
 export const useConnectFlow = () => {
   const [step, setStep] = useState(CONNECT_STEPS.IDLE);
   const [formData, setFormData] = useState({ name: '', email: '', company: '', message: '' });
@@ -66,7 +68,7 @@ export const useConnectFlow = () => {
       
       (async () => {
         try {
-          const response = await fetch("http://localhost:8000/connect", {
+          const response = await fetch(CONNECT_API_URL, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
