@@ -92,7 +92,14 @@ export const useConnectFlow = () => {
             const errorMessages = errorData.errors?.map(e => e.msg).join(', ') || "Invalid inputs.";
             pushAssistantMessage(`❌ Error: ${errorMessages}. Please try the connection flow again.`);
           } else {
-            pushAssistantMessage("❌ Error: Failed to send your message. Please try again later.");
+            let errorText = "Failed to send your message. Please try again later.";
+            try {
+              const errorData = await response.json();
+              if (errorData.detail) errorText = errorData.detail;
+            } catch (e) {
+              // Ignore JSON parse errors
+            }
+            pushAssistantMessage(`❌ Error: ${errorText}`);
           }
         } catch (error) {
             setStreaming(false);
