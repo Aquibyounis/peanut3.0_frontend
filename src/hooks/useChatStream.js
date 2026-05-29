@@ -2,7 +2,7 @@ import { useRef, useEffect } from 'react';
 import { useChatStore } from '../store/useChatStore';
 import { streamChatMessage } from '../services/api';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000/chat';
+const API_URL = import.meta.env.VITE_API_URL || 'https://peanut3-backend.onrender.com/chat';
 
 /**
  * Custom React hook that implements a throttled token buffering queue in pure JS.
@@ -152,7 +152,7 @@ export const useChatStream = () => {
           if (currentAssistantMessage && !currentAssistantMessage.content) {
             appendTokenToMessage(
               activeAssistantIdRef.current,
-              '⚠️ *An error occurred while connecting to the assistant backend. Please ensure the server is active locally at `http://127.0.0.1:8000/chat`.*'
+              '⚠️ *An error occurred while connecting to the assistant backend. Please ensure the server is active at `https://peanut3-backend.onrender.com/chat`.*'
             );
           }
         }

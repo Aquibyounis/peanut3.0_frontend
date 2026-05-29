@@ -9,7 +9,7 @@ export const CONNECT_STEPS = {
   ASK_MESSAGE: 'ASK_MESSAGE',
 };
 
-const CONNECT_API_URL = import.meta.env.VITE_CONNECT_API_URL || 'http://localhost:8000/connect';
+const CONNECT_API_URL = import.meta.env.VITE_CONNECT_API_URL || 'https://peanut3-backend.onrender.com/connect';
 
 export const useConnectFlow = () => {
   const [step, setStep] = useState(CONNECT_STEPS.IDLE);

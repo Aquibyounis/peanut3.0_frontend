@@ -116,9 +116,9 @@ function App() {
                   <div className="w-full max-w-3xl my-4 sm:my-6 p-4 rounded-xl border border-rose-500/20 bg-rose-950/20 text-rose-300 text-sm flex flex-col gap-1.5 glass-panel animate-in fade-in slide-in-from-bottom-2 duration-300">
                     <span className="font-semibold text-rose-200">⚠️ Backend Connection Refused</span>
                     <p className="text-rose-300/80 leading-relaxed font-sans">
-                      {error}. Please ensure the FastAPI backend is running locally at{' '}
+                      {error}. Please ensure the FastAPI backend is running at{' '}
                       <code className="bg-rose-950 px-1.5 py-0.5 rounded font-mono text-xs select-all text-white border border-rose-900/60">
-                        http://127.0.0.1:8000/chat
+                        https://peanut3-backend.onrender.com/chat
                       </code>.
                     </p>
                   </div>
