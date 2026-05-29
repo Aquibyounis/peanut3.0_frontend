@@ -87,13 +87,17 @@ export const useConnectFlow = () => {
           if (response.ok) {
             pushAssistantMessage("✅ Success! Your message has been sent to Aquib.");
             setFormData({ name: '', email: '', company: '', message: '' });
+          } else if (response.status === 422) {
+            const errorData = await response.json();
+            const errorMessages = errorData.errors?.map(e => e.msg).join(', ') || "Invalid inputs.";
+            pushAssistantMessage(`❌ Error: ${errorMessages}. Please try the connection flow again.`);
           } else {
             pushAssistantMessage("❌ Error: Failed to send your message. Please try again later.");
           }
         } catch (error) {
-          setStreaming(false);
-          pushAssistantMessage("❌ Error: Network error occurred while sending your message.");
-          console.error("Connect fetch error:", error);
+            setStreaming(false);
+            pushAssistantMessage("❌ Error: Network error occurred while sending your message.");
+            console.error("Connect fetch error:", error);
         }
       })();
     }
